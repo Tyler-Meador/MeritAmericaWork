@@ -1,0 +1,45 @@
+Tyler Meador
+Practice MidTerm
+Question 4
+
+4.
+import acm.graphics.*;
+import acm.program.*;
+import java.awt.*;
+import java.awt.events.*;
+
+public class Frog extends GraphicsProgram{
+	
+	static final int SQUARE_SIZE = 75;
+	static final int NROWS = 4;
+	static final int NCOLUMNS = 7;
+	
+	double frogX = NCOLUMNS / 2;
+	double frogY = NROWS * SQUARE_SIZE;
+	
+	public void run(){
+	GImage frog = new GImage("frog.gif");
+	
+	add(frog, frogX, frogY);
+	addMouseListeners();
+	
+	}
+	
+	public void mouseClicked(MouseEvent e){
+		double x = e.getX();
+		double y = e.getY();
+		
+		if(x > y){
+			move(SQUARE_SIZE, 0);
+		}else{
+			move(0, SQUARE_SIZE);
+		}
+	}
+	
+	
+	public void move(double x, double y){
+		frogX = frogX + x;
+		frogY = frogY + y;
+		frog.move(frogX, frogY);
+	}
+}

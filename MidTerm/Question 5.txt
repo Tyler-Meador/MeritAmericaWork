@@ -1,0 +1,26 @@
+Tyler Meador
+Practice Mid Term
+Question 5
+
+5.
+
+public String removeDoubleLetters(String str){
+	String newString= "";
+	for(int i = 0; i < str.lenth(); i++){
+		
+		char testLet = str.charAt(i);
+	
+		for(int j = 0; j < str.length(); j++){
+		int count = 0;
+		if(testLet == str.charAt(i){
+			count++;
+			
+		}	
+		if(testLet != str.charAt(i) || count < 2){
+			newString = newString + str.charAt(i);
+		}
+		
+	}
+	return newString;
+
+}

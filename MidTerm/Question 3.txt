@@ -1,0 +1,55 @@
+Tyler Meador
+Practice Mid Term
+
+Simple Java Programs
+
+3.
+import java.util.ArrayList;
+
+import acm.program.*;
+
+public class Problem2b extends ConsoleProgram{
+
+	public void run() {
+		int num;
+		int first = 0;
+		int second = 0;
+		ArrayList<Integer> numList = new ArrayList<Integer>();
+		
+		while(true) {
+			num = readInt("?");
+			if(num == 0) {
+				break;
+			}
+			
+			
+			
+			numList.add(num);
+				
+		}
+		
+		for(int i = 0; i < numList.size(); i++) {
+			int temp = numList.get(i);
+			if(temp > first)
+			{
+				first = temp;
+	
+			}
+			else {
+				if(temp > second && temp <= first)
+				second = temp;
+			}
+			
+		}
+		
+		println("The largest value is: " + first);
+		println("The second largest is: " + second);
+		
+		
+		
+		
+	}
+	
+	
+	
+}
