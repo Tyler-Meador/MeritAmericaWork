@@ -27,25 +27,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
 	DataSource dataSource;
 	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
-			.usersByUsernameQuery("select username, password,enabled "
-				+ "from users "
-				+ "where username = ?")
-			.authoritiesByUsernameQuery("select username, authority "
-				+ "from authorities "
-				+ "where username = ?");
-		
-		
-	}
-	
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/h2-console/**").permitAll()
 			.antMatchers("/authenticate").permitAll()
-			.antMatchers("/authenticate/createUser/**").hasAuthority("ROLE_ADMIN")
+			.antMatchers("/authenticate/createUser/**").hasAuthority("ADMIN")
 			.antMatchers("/CDOfferings").hasAuthority("ADMIN")
 			.antMatchers("/AccountHolders/**").hasAuthority("ADMIN")
 			.antMatchers("/Me/**").hasAnyAuthority("USER").anyRequest().authenticated()

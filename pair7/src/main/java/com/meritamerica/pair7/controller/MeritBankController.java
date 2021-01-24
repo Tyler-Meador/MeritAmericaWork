@@ -77,6 +77,7 @@ public class MeritBankController {
 	
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception{
+		System.out.println(authenticationRequest.getUsername() + " " + authenticationRequest.getPassword());
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
@@ -91,10 +92,6 @@ public class MeritBankController {
 		
 	}
 	
-	@GetMapping(value = "/Me/{id}")
-	public AccountHolder getMe(@PathVariable int id) {
-		return userRepo.findById(id).getAccountHolder();
-	}
 
 	@ResponseStatus(HttpStatus.CREATED)
 	@PostMapping(value = "/AccountHolders")
